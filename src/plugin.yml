@@ -1,0 +1,5 @@
+name: NickCard
+main: cc.baka9.nickcard.NickCard
+version: 1.0
+commands: 
+  nickcard:
