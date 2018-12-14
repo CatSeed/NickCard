@@ -9,20 +9,20 @@ import org.bukkit.inventory.ItemStack;
 public class Manages {
 
 	public static void msg(CommandSender sender, String msg) {
-		sender.sendMessage("¡ìa[¡ìe³ÆºÅ¿¨¡ìa]¡ì6" + msg.replace("&", "¡ì"));
+		sender.sendMessage("Â§a[Â§eç§°å·å¡Â§a]Â§6" + msg.replace("&", "Â§"));
 	}
 
 	public static ItemStack getNickCardItem() {
 		ItemStack item = new ItemStack(Material.PAPER);
-		ItemUtil.setItemLore(item, "¡ìb×Ô¶¨Òå³ÆºÅ¿¨", "<Î´ÃüÃû>", "¡ì3ÉèÖÃ³ÆºÅÖ¸Áî: /nickcard set ³ÆºÅ", "¡ì3ÑÕÉ«´úÂë:",
-				"¡ì1&1¡ì2&2¡ì3&3¡ì4&4¡ì5&5¡ì6&6¡ì7&7¡ì8&8¡ì9&9¡ì0&0¡ìa&a¡ìb&b¡ìc&c¡ìd&d¡ìe&e¡ìf&f");
+		ItemUtil.setItemLore(item, "Â§bè‡ªå®šä¹‰ç§°å·å¡", "<æœªå‘½å>", "Â§3è®¾ç½®ç§°å·æŒ‡ä»¤: /nickcard set ç§°å·", "Â§3é¢œè‰²ä»£ç :",
+				"Â§1&1Â§2&2Â§3&3Â§4&4Â§5&5Â§6&6Â§7&7Â§8&8Â§9&9Â§0&0Â§a&aÂ§b&bÂ§c&cÂ§d&dÂ§e&eÂ§f&f");
 		return item;
 	}
 
 	public static boolean itemIsNickCardItem(ItemStack item) {
 		if (ItemUtil.ItemIsEmpty(item)) return false;
 		List<String> lore = ItemUtil.getLore(item);
-		if (lore.size() >= 2 && lore.get(0).equals("¡ìb×Ô¶¨Òå³ÆºÅ¿¨")) return true;
+		if (lore.size() >= 2 && lore.get(0).equals("Â§bè‡ªå®šä¹‰ç§°å·å¡")) return true;
 		return false;
 	}
 
@@ -42,13 +42,13 @@ public class Manages {
 	}
 
 	private static int getNickLength(String str) {
-		return str.replace("&", "¡ì").replaceAll("¡ì[0-9abcdefroklnmABCDEFROKLNM]", "").length();
+		return str.replace("&", "Â§").replaceAll("Â§[0-9abcdefroklnmABCDEFROKLNM]", "").length();
 	}
 
 	public static void setNickCardNick(ItemStack item, String nick) {
 		List<String> lore = ItemUtil.getLore(item);
 		nick = Config.prefix + nick + Config.suffix;
-		lore.set(1, nick.replace("&", "¡ì"));
+		lore.set(1, nick.replace("&", "Â§"));
 		ItemUtil.setItemLore(item, lore);
 	}
 

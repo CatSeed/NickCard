@@ -21,14 +21,14 @@ public class NickCard extends JavaPlugin {
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		if (args.length > 0 && args[0].equalsIgnoreCase("reload") && sender.isOp()) {
 			Config.reload();
-			Manages.msg(sender, "²å¼şÅäÖÃÒÑÖØĞÂ¼ÓÔØ");
+			Manages.msg(sender, "æ’ä»¶é…ç½®å·²é‡æ–°åŠ è½½");
 			return true;
 		}
 		if (args.length > 0 && args[0].equalsIgnoreCase("get") && sender.isOp() && sender instanceof Player) {
 			Player player = (Player) sender;
 			player.getInventory().addItem(Manages.getNickCardItem());
 			player.updateInventory();
-			Manages.msg(sender, "ÒÑ»ñÈ¡");
+			Manages.msg(sender, "å·²è·å–");
 			return true;
 		}
 
@@ -36,48 +36,48 @@ public class NickCard extends JavaPlugin {
 			Player player = (Player) sender;
 			ItemStack item = player.getItemInHand();
 			if (!Manages.itemIsNickCardItem(item)) {
-				Manages.msg(sender, "ÄãÊÖÖĞµÄÎïÆ·²»ÊÇ³ÆºÅ¿¨");
+				Manages.msg(sender, "ä½ æ‰‹ä¸­çš„ç‰©å“ä¸æ˜¯ç§°å·å¡");
 				return true;
 			}
 
 			String nick = Manages.getNickCardItemNick(item);
-			if (nick.equals("<Î´ÃüÃû>")) {
-				Manages.msg(sender, "Äã»¹Ã»ÓĞÉèÖÃºÃ³ÆºÅ,ËùÒÔ²»ÄÜÊ¹ÓÃ");
+			if (nick.equals("<æœªå‘½å>")) {
+				Manages.msg(sender, "ä½ è¿˜æ²¡æœ‰è®¾ç½®å¥½ç§°å·,æ‰€ä»¥ä¸èƒ½ä½¿ç”¨");
 				return true;
 			}
 			ItemUtil.consumePlayerItem(player, item, 1);
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "manuaddv " + player.getName() + " prefix " + nick);
-			Manages.msg(sender, "Ê¹ÓÃ³É¹¦!");
-			player.chat("Ã×ÄÉÉ£~¿´¿´ÎÒßÕĞÂ³ÆºÅ°È!");
+			Manages.msg(sender, "ä½¿ç”¨æˆåŠŸ!");
+			player.chat("ç±³çº³æ¡‘~çœ‹çœ‹æˆ‘å“’æ–°ç§°å·å­!");
 			return true;
 		}
 		if (args.length > 1 && args[0].equalsIgnoreCase("set") && sender instanceof Player) {
 			Player player = (Player) sender;
 			ItemStack item = player.getItemInHand();
 			if (!Manages.itemIsNickCardItem(item)) {
-				Manages.msg(sender, "ÄãÊÖÖĞµÄÎïÆ·²»ÊÇ³ÆºÅ¿¨");
+				Manages.msg(sender, "ä½ æ‰‹ä¸­çš„ç‰©å“ä¸æ˜¯ç§°å·å¡");
 				return true;
 			}
 			String nick = args[1];
 			if (Manages.containsBlack(nick)) {
-				Manages.msg(sender, "³ÆºÅÖĞº¬ÓĞÎ¥½û×Ö´Ê,ÉèÖÃÊ§°Ü");
+				Manages.msg(sender, "ç§°å·ä¸­å«æœ‰è¿ç¦å­—è¯,è®¾ç½®å¤±è´¥");
 				return true;
 			}
 			if (Manages.nickAntiLong(nick)) {
-				Manages.msg(sender, "³ÆºÅ¹ı³¤,ÉèÖÃÊ§°Ü");
+				Manages.msg(sender, "ç§°å·è¿‡é•¿,è®¾ç½®å¤±è´¥");
 				return true;
 			}
 			Manages.setNickCardNick(item, nick);
-			Manages.msg(sender, "³ÆºÅ¿¨³ÆºÅÉèÖÃÎª:" + nick);
-			Manages.msg(sender, "¡ìbÇë²é¿´³ÆºÅ¿¨,Èç¹ûÂúÒâÇëÊäÈë/nickcard use À´Ê¹ÓÃ");
+			Manages.msg(sender, "ç§°å·å¡ç§°å·è®¾ç½®ä¸º:" + nick);
+			Manages.msg(sender, "Â§bè¯·æŸ¥çœ‹ç§°å·å¡,å¦‚æœæ»¡æ„è¯·è¾“å…¥/nickcard use æ¥ä½¿ç”¨");
 			return true;
 		}
 		if (sender.isOp()) {
-			Manages.msg(sender, "/nickcard get »ñÈ¡Ò»ÕÅ³ÆºÅÖ½");
-			Manages.msg(sender, "/nickcard reload ÖØÔØ²å¼ş");
+			Manages.msg(sender, "/nickcard get è·å–ä¸€å¼ ç§°å·çº¸");
+			Manages.msg(sender, "/nickcard reload é‡è½½æ’ä»¶");
 		}
-		Manages.msg(sender, "/nickcard set [³ÆºÅ] ÉèÖÃ³ÆºÅ");
-		Manages.msg(sender, "/nickcard use Ê¹ÓÃ³ÆºÅ¿¨");
+		Manages.msg(sender, "/nickcard set [ç§°å·] è®¾ç½®ç§°å·");
+		Manages.msg(sender, "/nickcard use ä½¿ç”¨ç§°å·å¡");
 		return super.onCommand(sender, command, label, args);
 	}
 }
